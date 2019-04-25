@@ -1,0 +1,19 @@
+version: "3"
+services:
+  app:
+    image: linuxserver/transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    ulimits:
+      nofile:
+        soft: 20000
+        hard: 40000
+
+    volumes:
+      - data:/config
+    restart: unless-stopped
+
+volumes:
+  data:
